@@ -16,7 +16,7 @@ set -x
 # run this from inside miLazyCracker git repo
 if [ -f "/etc/debian_version" ]; then
     pkgs=""
-    for pkg in git libnfc-bin autoconf libnfc-dev; do
+    for pkg in git libnfc-bin autoconf libnfc-dev mfoc; do
         if ! dpkg -l $pkg >/dev/null 2>&1; then
             pkgs="$pkgs $pkg"
         fi
@@ -25,19 +25,6 @@ if [ -f "/etc/debian_version" ]; then
         sudo apt-get install $pkgs
     fi
 fi
-
-# install MFOC
-[ -d mfoc ] || git clone https://github.com/nfc-tools/mfoc.git
-(
-    cd mfoc || exit 1
-    git reset --hard
-    git clean -dfx
-    # tested against commit 9d9f01fb
-    autoreconf -vfi
-    ./configure
-    make
-    sudo make install
-)
 
 # install Hardnested Attack Tool
 [ -d crypto1_bs ] || git clone https://github.com/aczid/crypto1_bs
