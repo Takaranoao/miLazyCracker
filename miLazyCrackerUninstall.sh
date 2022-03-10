@@ -5,9 +5,7 @@
 #sudo apt-get remove libnfc-bin
 #sudo apt-get remove autoconf
 #sudo apt-get remove libnfc-dev
-
-# uninstall MFOC
-sudo rm -f /usr/local/bin/mfoc /usr/local/share/man/man1/mfoc.1
+#sudo apt-get remove mfoc
 
 # uninstall Hardnested Attack Tool
 sudo rm -f /usr/local/bin/libnfc_crypto1_crack
